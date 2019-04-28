@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker service logs -f $(docker service ps engineering-bay -q | tail -1 )
+
+# using ps to get ID tail the last one to follow

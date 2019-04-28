@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker-machine ssh Char docker image rm $(docker images -a -q)
