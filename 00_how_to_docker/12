@@ -1,0 +1,20 @@
+#!/bin/bash
+docker run -d \
+	-p 3306:3306 \
+	-e MYSQL_ROOT_PASSWORD=Kerrigan \
+	-e MYSQL_DATABASE=zerglings \
+	-v hatchery:/var/lib/mysql \
+	--restart on-failure \
+	--name spawning-pool \
+	mysql --default-authentication-plugin=mysql_native_password
+# --restart		restart mode, always will restart regardless of the SIG status
+# -d			as detach mode
+# --name		name the container
+# -e			--env set environment variable for the container
+# -v			--mount after 17.06 also works, one simple, one verbose
+# use
+# docker exec spawning-pool sh -c 'exec mysqldump --all-databases -uroot -pKerrigan' > ./all-databases.sql
+# to check mysql setting db name root password
+# use
+# docker inspect -f '{{ .Mounts }}' spawning-pool
+# to check volumn mounting point

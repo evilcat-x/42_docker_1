@@ -1,0 +1,5 @@
+docker inspect -f "{{ .NetworkSettings.IPAddress }}" overlord
+
+# inspect return the information
+# -f is --format
+# it is accessing like a json field

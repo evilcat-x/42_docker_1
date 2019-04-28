@@ -1,0 +1,3 @@
+#!/bin/bash
+apt update && apt -y upgrade && apt install -y clang git
+# run with docker run -it --rm alpine
