@@ -1,0 +1,9 @@
+#!/bin.bash
+
+# docker swarm join --token SWMTKN-1-6d6bwignllosywc5211kmm56u1abe4xco9o14ydwg2pkxt2srt-25g9avkr21vnpa9z6i247y6e6 192.168.99.101:2377
+
+# token will change based on preivous command output
+
+$(docker-machine ssh Char docker swarm join-token worker | tail -n +2)
+
+# getting swarm token and command from Char directly, tho the tail thing might change

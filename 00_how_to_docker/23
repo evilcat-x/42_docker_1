@@ -1,0 +1,5 @@
+#!/bin/bash
+
+docker-machine ssh Char docker network create -d overlay overmind
+
+# docker-machine ssh Char docker network ls  to check

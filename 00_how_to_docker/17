@@ -1,0 +1,5 @@
+#!/bin/bash
+docker-machine ssh Char docker container ls
+
+# same as docker ps but ps might ge depreciated as ls is more verbose to specific type
+# e.g. container ls   image ls

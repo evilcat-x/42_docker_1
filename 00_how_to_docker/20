@@ -1,0 +1,4 @@
+#!/bin/bash
+CHAR_IP=$(docker-machine ip Char)
+docker-machine ssh Char docker swarm init --advertise-addr $CHAR_IP
+
