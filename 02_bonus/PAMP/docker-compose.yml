@@ -3,23 +3,26 @@ services:
   php-apache:
     image: php:7.2.1-apache
     build:
-      context: ./php-apache
+      context: .
+      dockerfile: php-apache
     ports:
-      - 80:80
+      - 3001:80
     volumes:
-      - ./app:/var/www/html
+      - ./app:/var/www/html/
     links:
       - "mariadb"
+  mariadb:
+    image: mariadb:10.1
+    restart: always
+    volumes:
+      - mariadb:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: kerrigan
+      MYSQL_PASSWORD: Kerrigan
+      MYSQL_DATABASE: zerg
 
-mariadb:
-  image: mariadb:10.1
-  restart: always
-  volumes:
-    - mariadb:/var/lib/mysql
-  environment:
-    MYSQL_ROOT_PASSWORD: root
-    MYSQL_USER: kerrigan
-    MYSQL_PASSWORD: Kerrigan
-    MYSQL_DATABASE: zerg
-
-volumes: mariadb:
+volumes:
+  mariadb:
+# docker in the virtual machine dont know what this ./app is located. mannually cping it
+# docker cp 02_bonus/PAMP/app/index.php pamp_php-apache_1:/var/www/html/index.php
