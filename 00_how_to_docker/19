@@ -1,5 +1,6 @@
 #!/bin/bash
 
+docker-machine ssh Char mkdir ex19
 docker-machine mount Char:/home/docker/ex19 00_how_to_docker/ex19
 
 docker run -dit\
@@ -14,13 +15,12 @@ docker exec \
 	Abathur \
 	pip install Flask
 
-cp 00_how_to_docker/app.py /nfs/2018/s/seli/vogosphere/app.py
-
 docker exec \
 	-de FLASK_APP=/root/app.py \
 	Abathur \
 	flask run --host=0.0.0.0 --port 3000
 
+# brew install sshfs
 # umount 00_how_to_docker/ex19
 
 
